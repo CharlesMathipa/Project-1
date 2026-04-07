@@ -4,6 +4,7 @@ public class LoginPage {
         Scanner scanner = new Scanner(System.in);
         
         String username, saCellNumber, password;
+        boolean loggedIn = false;
 
         System.out.print("Enter username: ");
         username = scanner.nextLine();
@@ -12,22 +13,33 @@ public class LoginPage {
 
      /*this is where the user will be asked to enter their password, and 
      the the complexity will be checked*/
-        do {
-            System.out.print("Enter password: ");
-            password = scanner.nextLine();
-            
-            
-            if (!checkPasswordComplexity(password)) {
-                System.out.println("Password must be at least 8 characters and include uppercase, lowercase, digit, and special character. Please try again.");
-            }
-            
-        } while (!checkPasswordComplexity(password));
+ while (!loggedIn) {
+           
+            boolean isValidComplexity = false;
 
-        
-        if (username.equals("admin") && password.equals("Password123!")) {
-            System.out.println("Login successful! Welcome, " + username + "!");
-        } else {
-            System.out.println("Login failed! Invalid username or password.");
+            do {
+                System.out.print("Enter password: ");
+                password = scanner.nextLine();
+                
+               
+                isValidComplexity = checkPasswordComplexity(password);
+                
+                if (isValidComplexity) {
+                    System.out.println("Password successfully captured"); 
+                } else {
+                    System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character."); 
+                }
+                
+            } while (!isValidComplexity);
+
+            
+            if (username.equals("admin") && password.equals("Password123!")) {
+                System.out.println("Login successful! Welcome, " + username + "!");
+                loggedIn = true; 
+            } else {
+                System.out.println("Login failed! Invalid username or password. Please try again.");
+                System.out.println("--------------------------------------------------");
+            }
         }
 
         scanner.close(); 
