@@ -19,7 +19,10 @@ public class UserInputOut {
         System.out.print("Enter a password: ");
         String password = scanner.nextLine();
 
-        String registrationMessage = login.registerUser(username, password, firstName, lastName);
+        System.out.print("Enter your phone number (e.g., +27123456789): ");
+        String phoneNumber = scanner.nextLine();
+
+        String registrationMessage = login.registerUser(username, password, firstName, lastName, phoneNumber);
         System.out.println(registrationMessage);
 
         if (registrationMessage.equals("The two above conditions have been met and the user has been registered successfully.")) {
