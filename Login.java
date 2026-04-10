@@ -26,6 +26,7 @@ public boolean checkPasswordComplexity(String password) {
         }
         return hasUpper && hasDigit && hasSpecial;
     }
+
 // the regex pattern for the phone number is: ^\+27\d{9}$ to ensure that the phone number starts with +27 followed by exactly 9 digits.
 public boolean checkPhoneNumber(String phoneNumber) {
     
@@ -54,6 +55,10 @@ public String registerUser(String username, String password, String firstName, S
     
     return "The two above conditions have been met and the user has been registered successfully.";
 }
+
+public boolean loginUser(String enteredUsername, String enteredPassword) {
+        return enteredUsername.equals(this.storedUsername) && enteredPassword.equals(this.storedPassword);
+    }
 
 public String returnLoginStatus(boolean isLoginSuccessful) {
     if (isLoginSuccessful) {
