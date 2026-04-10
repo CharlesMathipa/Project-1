@@ -24,7 +24,7 @@ public boolean checkPasswordComplexity(String password) {
             // Check for non-alphanumeric character
             if (!Character.isLetterOrDigit(c)) hasSpecial = true;
         }
-        return hasUpper && hasDigit && hasSpecial;
+        return hasUpper && hasDigit && hasSpecial && password.length() >= 8;
     }
 
 // the regex pattern for the phone number is: ^\+27\d{9}$ to ensure that the phone number starts with +27 followed by exactly 9 digits.
