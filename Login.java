@@ -7,3 +7,25 @@ public boolean checkPhoneNumber(String phoneNumber) {
     String regex = "^\\+27\\d{9}$";
     return Pattern.matches(regex, phoneNumber);
 }
+
+public String registerUser(String username, String password, String firstName, String lastName, String phoneNumber) {
+    if (!checkUserName(username)) {
+        return "Username is not correctly formatted...";
+    }
+    
+    if (!checkPasswordComplexity(password)) {
+        return "Password is not correctly formatted...";
+    }
+
+   
+    if (!checkPhoneNumber(phoneNumber)) {
+        return "Cell phone number incorrectly formatted or does not contain international code.";
+    }
+
+    this.storedUsername = username;
+    this.storedPassword = password;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    
+    return "The two above conditions have been met and the user has been registered successfully.";
+}
