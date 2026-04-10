@@ -45,3 +45,4 @@ public String returnLoginStatus(boolean isLoginSuccessful) {
         return "Username or password incorrect, please try again.";
     }
 }
+}
