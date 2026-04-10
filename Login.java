@@ -7,6 +7,10 @@ public class Login {
     private String firstName;
     private String lastName;
 
+public boolean checkUserName(String username) {
+        return username.contains("_") && username.length() <= 5;
+    }
+
 // the regex pattern for the phone number is: ^\+27\d{9}$ to ensure that the phone number starts with +27 followed by exactly 9 digits.
 public boolean checkPhoneNumber(String phoneNumber) {
     
