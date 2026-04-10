@@ -1,6 +1,13 @@
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+//these stored variables will be used to store the user information for later use in the login process
+public class Login {
+    private String storedUsername;
+    private String storedPassword;
+    private String firstName;
+    private String lastName;
+
 // the regex pattern for the phone number is: ^\+27\d{9}$ to ensure that the phone number starts with +27 followed by exactly 9 digits.
 public boolean checkPhoneNumber(String phoneNumber) {
     
