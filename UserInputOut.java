@@ -31,10 +31,10 @@ public class UserInputOut {
             System.out.print("Enter your password to login: ");
             String loginPassword = scanner.nextLine();
 
-            // Check if login is valid
+            //this block checks if login is valid
             boolean isValidLogin = login.loginUser(loginUsername, loginPassword);
             
-            // Get the final status message and print it
+            //this section gets the final status message and print it
             String loginStatusMessage = login.returnLoginStatus(isValidLogin);
             System.out.println(loginStatusMessage);
         }

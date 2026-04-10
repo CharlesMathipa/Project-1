@@ -29,3 +29,12 @@ public String registerUser(String username, String password, String firstName, S
     
     return "The two above conditions have been met and the user has been registered successfully.";
 }
+
+public String returnLoginStatus(boolean isLoginSuccessful) {
+    if (isLoginSuccessful) {
+        // Return a welcome message with the user's first and last name
+        return "Welcome " + firstName + ", " + lastName + " it is great to see you again.";
+    } else {
+        return "Username or password incorrect, please try again.";
+    }
+}
