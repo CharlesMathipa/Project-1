@@ -1,5 +1,4 @@
 import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 //these stored variables will be used to store the user information for later use in the login process
 public class Login {
