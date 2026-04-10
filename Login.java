@@ -11,6 +11,21 @@ public boolean checkUserName(String username) {
         return username.contains("_") && username.length() <= 5;
     }
 
+public boolean checkPasswordComplexity(String password) {
+  if (password == null || password.length() < 8) return false;
+
+    boolean hasUpper = false;
+    boolean hasDigit = false;
+    boolean hasSpecial = false;
+
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) hasUpper = true;
+            if (Character.isDigit(c)) hasDigit = true;
+            // Check for non-alphanumeric character
+            if (!Character.isLetterOrDigit(c)) hasSpecial = true;
+        }
+        return hasUpper && hasDigit && hasSpecial;
+    }
 // the regex pattern for the phone number is: ^\+27\d{9}$ to ensure that the phone number starts with +27 followed by exactly 9 digits.
 public boolean checkPhoneNumber(String phoneNumber) {
     
