@@ -7,11 +7,11 @@ public class UserInputOut {
         try (Scanner scanner = new Scanner(System.in)) {
             Login login = new Login();
 
-            String name;
-            String surname;
-            String username;
-            String password;
-            String phoneNumber;
+            String name = "";
+            String surname = "";
+            String username = "";
+            String password = "";
+            String phoneNumber = "";
             
             System.out.println("--- REGISTRATION ---");
             System.out.print("Enter your Name: ");
@@ -19,12 +19,29 @@ public class UserInputOut {
             
             System.out.print("Enter your Surname: ");
             surname = scanner.nextLine();
-            
-            System.out.print("Enter a username: ");
-            username = scanner.nextLine();
-            
-            System.out.print("Enter a password: ");
-            password = scanner.nextLine();
+
+
+            boolean validUsername = false;
+            while (!validUsername) {
+                System.out.print("Enter a username: ");
+                username = scanner.nextLine();
+                if (login.checkUserName(username)) {
+                    validUsername = true;
+                } else {
+                    System.out.println("Username is not correctly formatted. It must contain an underscore and be no more than 5 characters long. Please try again.");
+                }
+            }
+
+            boolean validPassword = false;
+            while (!validPassword) {
+                System.out.print("Enter a password: ");
+                password = scanner.nextLine();
+                if (login.checkPasswordComplexity(password)) {
+                    validPassword = true;
+                } else {
+                    System.out.println("Password is not correctly formatted. It must be at least 8 characters long, contain an uppercase letter, a digit, and a special character. Please try again.");
+                }
+            }
             
             System.out.print("Enter your phone number with the international South African code included(e.g., +27123456789): ");
             phoneNumber = scanner.nextLine();
