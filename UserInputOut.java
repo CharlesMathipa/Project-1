@@ -53,7 +53,7 @@ public class UserInputOut {
                     System.out.println("Phone number successfully added.");
                     checkCellPhoneNumber = true;
                 } else {
-                    System.out.println("Phone number is not correctly formatted; please ensure that the phone number starts with +27 followed by exactly 9 digits.");
+                    System.out.println("Phone number is incorrectly formatted or does not contain the international code.");
                 }
             }
 
