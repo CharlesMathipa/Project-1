@@ -4,24 +4,30 @@ public class UserInputOut {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
             Login login = new Login();
+
+            String name;
+            String surname;
+            String username;
+            String password;
+            String phoneNumber;
             
             System.out.println("--- REGISTRATION ---");
-            System.out.print("Enter your first name: ");
-            String firstName = scanner.nextLine();
+            System.out.print("Enter your Name: ");
+            name = scanner.nextLine();
             
-            System.out.print("Enter your last name: ");
-            String lastName = scanner.nextLine();
+            System.out.print("Enter your Surname: ");
+            surname = scanner.nextLine();
             
             System.out.print("Enter a username: ");
-            String username = scanner.nextLine();
+            username = scanner.nextLine();
             
             System.out.print("Enter a password: ");
-            String password = scanner.nextLine();
+            password = scanner.nextLine();
             
-            System.out.print("Enter your phone number (e.g., +27123456789): ");
-            String phoneNumber = scanner.nextLine();
+            System.out.print("Enter your phone number with the international South African code included(e.g., +27123456789): ");
+            phoneNumber = scanner.nextLine();
             
-            String registrationMessage = login.registerUser(username, password, firstName, lastName, phoneNumber);
+            String registrationMessage = login.registerUser(username, password, name, surname, phoneNumber);
             System.out.println(registrationMessage);
             
             if (registrationMessage.equals("The two above conditions have been met and the user has been registered successfully.")) {
