@@ -21,13 +21,13 @@ public class UserInputOut {
             surname = scanner.nextLine();
 
 
-            boolean validUsername = false;
-            while (!validUsername) {
+            boolean checkUserName = false;
+            while (!checkUserName) {
                 System.out.print("Enter a username: ");
                 username = scanner.nextLine();
                 if (login.checkUserName(username)) {
                     System.out.println("Username successfully captured."); 
-                    validUsername = true;
+                    checkUserName = true;
                 } else {
                     System.out.println("Username is not correctly formatted; please ensure that the username contains an underscore and is no more than five characters long.");
                 }
@@ -60,95 +60,31 @@ public class UserInputOut {
             String registrationMessage = login.registerUser(username, password, name, surname, phoneNumber);
             System.out.println(registrationMessage);
             
-            while (registrationMessage.equals("The two above conditions have been met and the user has been registered successfully.")) {
-                
+            if (registrationMessage.equals("The two above conditions have been met and the user has been registered successfully.")) {
+
                 System.out.println("\n--- LOGIN ---");
+                while (!checkUserName) {
                 System.out.print("Enter your username to login: ");
-                String loginUsername = scanner.nextLine();
-                
+                String loginUserName = scanner.nextLine();
+                if (login.checkUserName(username)) {
+                    System.out.println("Username successfully captured."); 
+                    checkUserName = true;
+                } else {
+                    System.out.println("Username is not correctly formatted; please ensure that the username contains an underscore and is no more than five characters long.");
+                }
+            }
+
                 System.out.print("Enter your password to login: ");
                 String loginPassword = scanner.nextLine();
-                
+
                 //this block checks if login is valid
-                boolean isValidLogin = login.loginUser(loginUsername, loginPassword);
-                
+                boolean isValidLogin = login.loginUser(loginUserName, loginPassword);
+
                 //this section gets the final status message and print it
                 String loginStatusMessage = login.returnLoginStatus(isValidLogin);
                 System.out.println(loginStatusMessage);
-            } if (!registrationMessage.equals("The two above conditions have been met and the user has been registered successfully.")) {
-                System.out.println("Registration failed. Please restart the application to try again.");
+
+                isLoggedIn = isValidLogin;
             }
         }
     }
-
-    //these stored variables will be used to store the user information for later use in the login process
-public static class Login {
-    private String storedUsername;
-    private String storedPassword;
-    private String name;
-    private String surname;
-    private String phoneNumber;
-
-public boolean checkUserName(String username) {
-        return username.contains("_") && username.length() <= 5;
-    }
-
-public boolean checkPasswordComplexity(String password) {
-  if (password == null || password.length() < 8) return false;
-
-    boolean hasUpper = false;
-    boolean hasDigit = false;
-    boolean hasSpecial = false;
-
-        for (char c : password.toCharArray()) {
-            if (Character.isUpperCase(c)) hasUpper = true;
-            if (Character.isDigit(c)) hasDigit = true;
-            // Check for non-alphanumeric character
-            if (!Character.isLetterOrDigit(c)) hasSpecial = true;
-        }
-        return hasUpper && hasDigit && hasSpecial && password.length() >= 8;
-    }
-
-// the regex pattern for the phone number is: ^\+27\d{9}$ to ensure that the phone number starts with +27 followed by exactly 9 digits.
-public boolean checkPhoneNumber(String phoneNumber) {
-    
-    String regex = "^\\+27\\d{9}$";
-    return Pattern.matches(regex, phoneNumber);
-}
-
-public String registerUser(String username, String password, String name, String surname, String phoneNumber) {
-    if (!checkUserName(username)) {
-        return "Username is not correctly formatted...";
-    }
-    
-    if (!checkPasswordComplexity(password)) {
-        return "Password is not correctly formatted...";
-    }
-
-   
-    if (!checkPhoneNumber(phoneNumber)) {
-        return "Cell phone number incorrectly formatted or does not contain international code.";
-    }
-
-    this.storedUsername = username;
-    this.storedPassword = password;
-    this.name = name;
-    this.surname = surname;
-    this.phoneNumber = phoneNumber;
-    return "The two above conditions have been met and the user has been registered successfully.";
-}
-
-public boolean loginUser(String enteredUsername, String enteredPassword) {
-        return enteredUsername.equals(this.storedUsername) && enteredPassword.equals(this.storedPassword);
-    }
-
-public String returnLoginStatus(boolean isLoginSuccessful) {
-    if (isLoginSuccessful) {
-        // Return a welcome message with the user's first and last name
-        return "Welcome " + name + ", " + surname + " it is great to see you again.";
-    } else {
-        return "Username or password incorrect, please try again.";
-    }
-}
-}
-}        
