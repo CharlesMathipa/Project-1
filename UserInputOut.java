@@ -26,20 +26,22 @@ public class UserInputOut {
                 System.out.print("Enter a username: ");
                 username = scanner.nextLine();
                 if (login.checkUserName(username)) {
+                    System.out.println("Username successfully captured."); 
                     validUsername = true;
                 } else {
-                    System.out.println("Username is not correctly formatted. It must contain an underscore and be no more than 5 characters long. Please try again.");
+                    System.out.println("Username is not correctly formatted; please ensure that the username contains an underscore and is no more than five characters long.");
                 }
             }
 
-            boolean validPassword = false;
-            while (!validPassword) {
+            boolean checkPasswordComplexity = false;
+            while (!checkPasswordComplexity) {
                 System.out.print("Enter a password: ");
                 password = scanner.nextLine();
                 if (login.checkPasswordComplexity(password)) {
-                    validPassword = true;
+                    System.out.println("Password successfully captured.");
+                    checkPasswordComplexity = true;
                 } else {
-                    System.out.println("Password is not correctly formatted. It must be at least 8 characters long, contain an uppercase letter, a digit, and a special character. Please try again.");
+                    System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.");
                 }
             }
             
