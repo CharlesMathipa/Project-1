@@ -60,7 +60,7 @@ public class UserInputOut {
             String registrationMessage = login.registerUser(username, password, name, surname, phoneNumber);
             System.out.println(registrationMessage);
             
-            if (registrationMessage.equals("The two above conditions have been met and the user has been registered successfully.")) {
+            while (registrationMessage.equals("The two above conditions have been met and the user has been registered successfully.")) {
                 
                 System.out.println("\n--- LOGIN ---");
                 System.out.print("Enter your username to login: ");
@@ -75,6 +75,8 @@ public class UserInputOut {
                 //this section gets the final status message and print it
                 String loginStatusMessage = login.returnLoginStatus(isValidLogin);
                 System.out.println(loginStatusMessage);
+            } if (!registrationMessage.equals("The two above conditions have been met and the user has been registered successfully.")) {
+                System.out.println("Registration failed. Please restart the application to try again.");
             }
         }
     }
