@@ -57,6 +57,7 @@ public static class Login {
     private String storedPassword;
     private String name;
     private String surname;
+    private String phoneNumber;
 
 public boolean checkUserName(String username) {
         return username.contains("_") && username.length() <= 5;
@@ -103,7 +104,7 @@ public String registerUser(String username, String password, String name, String
     this.storedPassword = password;
     this.name = name;
     this.surname = surname;
-    
+    this.phoneNumber = phoneNumber;
     return "The two above conditions have been met and the user has been registered successfully.";
 }
 
