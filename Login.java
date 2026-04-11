@@ -4,8 +4,8 @@ import java.util.regex.Pattern;
 public class Login {
     private String storedUsername;
     private String storedPassword;
-    private String firstName;
-    private String lastName;
+    private String name;
+    private String surname;
 
 public boolean checkUserName(String username) {
         return username.contains("_") && username.length() <= 5;
@@ -34,7 +34,7 @@ public boolean checkPhoneNumber(String phoneNumber) {
     return Pattern.matches(regex, phoneNumber);
 }
 
-public String registerUser(String username, String password, String firstName, String lastName, String phoneNumber) {
+public String registerUser(String username, String password, String name, String surname, String phoneNumber) {
     if (!checkUserName(username)) {
         return "Username is not correctly formatted...";
     }
@@ -50,8 +50,8 @@ public String registerUser(String username, String password, String firstName, S
 
     this.storedUsername = username;
     this.storedPassword = password;
-    this.firstName = firstName;
-    this.lastName = lastName;
+    this.name = name;
+    this.surname = surname;
     
     return "The two above conditions have been met and the user has been registered successfully.";
 }
@@ -63,7 +63,7 @@ public boolean loginUser(String enteredUsername, String enteredPassword) {
 public String returnLoginStatus(boolean isLoginSuccessful) {
     if (isLoginSuccessful) {
         // Return a welcome message with the user's first and last name
-        return "Welcome " + firstName + ", " + lastName + " it is great to see you again.";
+        return "Welcome " + name + ", " + surname + " it is great to see you again.";
     } else {
         return "Username or password incorrect, please try again.";
     }
