@@ -45,9 +45,18 @@ public class UserInputOut {
                 }
             }
             
-            System.out.print("Enter your phone number with the international South African code included(e.g., +27123456789): ");
-            phoneNumber = scanner.nextLine();
-            
+            boolean checkCellPhoneNumber = false;
+            while (!checkCellPhoneNumber) {
+                System.out.print("Enter your phone number with the international South African code included(e.g., +27123456789): ");
+                phoneNumber = scanner.nextLine();
+                if (login.checkPhoneNumber(phoneNumber)) {
+                    System.out.println("Phone number successfully added.");
+                    checkCellPhoneNumber = true;
+                } else {
+                    System.out.println("Phone number is not correctly formatted; please ensure that the phone number starts with +27 followed by exactly 9 digits.");
+                }
+            }
+
             String registrationMessage = login.registerUser(username, password, name, surname, phoneNumber);
             System.out.println(registrationMessage);
             
