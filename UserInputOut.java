@@ -7,14 +7,14 @@ public class UserInputOut {
             boolean exitProgram = false;
 
             // Variables to store data across menu choices
-            String name = "";
-            String surname = "";
+            String name;
+            String surname;
             String username = "";
             String password = "";
             String phoneNumber = "";
-            boolean checkUserName = false;
-            boolean checkPasswordComplexity = false;
-            boolean checkCellPhoneNumber = false;
+            boolean checkUserName;
+            boolean checkPasswordComplexity;
+            boolean checkCellPhoneNumber;
 
             while (!exitProgram) {
                 System.out.println("\n=== WELCOME SYSTEM ===");
