@@ -28,4 +28,22 @@ public class LoginTest {
         //this tests an invalid password
         assertFalse(login.checkPasswordComplexity("password"));
     }
+
+    @Test
+    public void testPhoneNumberValid() {
+        // this tests a valid South African international number
+        assertTrue(login.checkPhoneNumber("+27123456789"));
+    }
+
+    @Test
+    public void testLoginLogic() {
+        //We should first, register a user to set the 'stored' variables
+        login.registerUser("ky_1", "P@ssword1!", "John", "Doe", "+27821234567");
+        
+        //This Test if login succeeds with the correct details
+        assertTrue(login.loginUser("ky_1", "P@ssword1!"));
+        
+        //This this test if login fails with the wrong password
+        assertFalse(login.loginUser("ky_1", "wrongPass"));
+    }
 }
