@@ -75,7 +75,6 @@ public class UserInputOut {
                     case "2":
                         System.out.println("\n--- LOGIN ---");
 
-                        // BUG FIX: Changed 'while' to 'if' and 'break' to 'continue'
                         if (username.isEmpty() || password.isEmpty()) {
                             System.out.println("No registered user found. Please register first.");
                             continue; 
