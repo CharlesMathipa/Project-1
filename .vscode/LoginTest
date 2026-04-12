@@ -1,1 +1,22 @@
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class LoginTest {
+
+    Login login = new Login();
+
+    @Test
+    public void testCheckUserNameCorrect() {
+        //this tests a valid username
+        assertTrue(login.checkUserName("kyl_1"));
+    }
+
+    @Test
+    public void testCheckPasswordComplexity() {
+        //this tests a valid password
+        assertTrue(login.checkPasswordComplexity("Password1!"));
+        assertFalse(login.checkPasswordComplexity("password"));
+        assertFalse(login.checkPasswordComplexity("PASSWORD"));
+        assertFalse(login.checkPasswordComplexity("Passw1"));
+    }
+}
