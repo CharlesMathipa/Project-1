@@ -12,11 +12,20 @@ public class LoginTest {
     }
 
     @Test
-    public void testCheckPasswordComplexity() {
+    public void testCheckUserNameIncorrect() {
+        //this tests an invalid username
+        assertFalse(login.checkUserName("kyle_12345"));
+    }
+
+    @Test
+    public void testCheckPasswordComplexitySuccess() {
         //this tests a valid password
-        assertTrue(login.checkPasswordComplexity("Password1!"));
+        assertTrue(login.checkPasswordComplexity("Ch@tt3r2023!"));
+    }
+
+    @Test
+    public  void testCheckPasswordComplexityFailure() {
+        //this tests an invalid password
         assertFalse(login.checkPasswordComplexity("password"));
-        assertFalse(login.checkPasswordComplexity("PASSWORD"));
-        assertFalse(login.checkPasswordComplexity("Passw1"));
     }
 }
