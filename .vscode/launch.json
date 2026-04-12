@@ -5,8 +5,42 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Attach to Shared Memory",
+            "type": "jdk",
+            "request": "attach",
+            "sharedMemoryName": ""
+        },
+        {
             "type": "java",
-            "name": "Current File",
+            "name": "Attach",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": "<debug port of the debuggee>"
+        },
+        {
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "request": "attach",
+            "type": "chrome",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "java",
+            "name": "Attach",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": "<debug port of the debuggee>"
+        },
+        {
+            "type": "java",
+            "name": "Launch Java Program",
+            "request": "launch",
+            "mainClass": ""
+        },
+
+        {
+            "type": "java",
+            "name": "LoginTes${selectedText}t",
             "request": "launch",
             "mainClass": "${file}"
         }
