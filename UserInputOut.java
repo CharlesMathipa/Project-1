@@ -58,16 +58,16 @@ public class UserInputOut {
                         }
 
                         checkCellPhoneNumber = false;
-            while (!checkCellPhoneNumber) {
-                System.out.print("Enter your phone number with the international South African code included(e.g., +27123456789): ");
-                phoneNumber = scanner.nextLine();
-                if (login.checkPhoneNumber(phoneNumber)) {
-                    System.out.println("Phone number successfully added.");
-                    checkCellPhoneNumber = true;
-                } else {
-                    System.out.println("Phone number is incorrectly formatted or does not contain the international code.");
-                }
-            }
+                        while (!checkCellPhoneNumber) {
+                            System.out.print("Enter your phone number with the international South African code included (e.g., +27123456789): ");
+                            phoneNumber = scanner.nextLine();
+                            if (login.checkPhoneNumber(phoneNumber)) {
+                                System.out.println("Phone number successfully added.");
+                                checkCellPhoneNumber = true;
+                            } else {
+                                System.out.println("Phone number is incorrectly formatted or does not contain the international code.");
+                            }
+                        }
 
                         System.out.println(login.registerUser(username, password, name, surname, phoneNumber));
                         break;
@@ -75,36 +75,38 @@ public class UserInputOut {
                     case "2":
                         System.out.println("\n--- LOGIN ---");
 
-                        while (username.isEmpty() || password.isEmpty()) {
+                        // BUG FIX: Changed 'while' to 'if' and 'break' to 'continue'
+                        if (username.isEmpty() || password.isEmpty()) {
                             System.out.println("No registered user found. Please register first.");
-                            break;
+                            continue; 
                         }
                         
-                                    String loginUserName = "";
-                checkUserName = false;
-                while (!checkUserName) {
-                    System.out.print("Enter your username to login: ");
-                    loginUserName = scanner.nextLine();
-                    if (login.checkUserName(loginUserName)) {
-                        System.out.println("Username successfully captured."); 
-                        checkUserName = true;
-                    } else {
-                        System.out.println("Username is not correctly formatted; please ensure that the username contains an underscore and is no more than five characters long.");
-                    }
-                }
-                
-                String loginPassword = "";
-                checkPasswordComplexity = false;
-                while (!checkPasswordComplexity) {
-                    System.out.print("Enter your password to login: ");
-                    loginPassword = scanner.nextLine();
-                    if (login.checkPasswordComplexity(loginPassword)) {
-                        System.out.println("Password successfully captured.");
-                        checkPasswordComplexity = true;
-                    } else {
-                        System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.");
-                    }
-                }
+                        String loginUserName = "";
+                        checkUserName = false;
+                        while (!checkUserName) {
+                            System.out.print("Enter your username to login: ");
+                            loginUserName = scanner.nextLine();
+                            if (login.checkUserName(loginUserName)) {
+                                System.out.println("Username successfully captured."); 
+                                checkUserName = true;
+                            } else {
+                                System.out.println("Username is not correctly formatted; please ensure that the username contains an underscore and is no more than five characters long.");
+                            }
+                        }
+                        
+                        String loginPassword = "";
+                        checkPasswordComplexity = false;
+                        while (!checkPasswordComplexity) {
+                            System.out.print("Enter your password to login: ");
+                            loginPassword = scanner.nextLine();
+                            if (login.checkPasswordComplexity(loginPassword)) {
+                                System.out.println("Password successfully captured.");
+                                checkPasswordComplexity = true;
+                            } else {
+                                System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.");
+                            }
+                        }
+                        
                         boolean isValidLogin = login.loginUser(loginUserName, loginPassword);
                         System.out.println(login.returnLoginStatus(isValidLogin));
 
