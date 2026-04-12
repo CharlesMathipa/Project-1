@@ -26,7 +26,7 @@ public class UserInputOut {
                 String choice = scanner.nextLine();
 
                 switch (choice) {
-                    case "1":
+                    case "1" -> {
                         System.out.println("\n--- REGISTRATION ---");
                         System.out.print("Enter your Name: ");
                         name = scanner.nextLine();
@@ -70,9 +70,9 @@ public class UserInputOut {
                         }
 
                         System.out.println(login.registerUser(username, password, name, surname, phoneNumber));
-                        break;
+                    }
 
-                    case "2":
+                    case "2" -> {
                         System.out.println("\n--- LOGIN ---");
 
                         if (username.isEmpty() || password.isEmpty()) {
@@ -114,15 +114,14 @@ public class UserInputOut {
                         } else {
                             System.out.println("Access Denied. Please try again.");
                         }
-                        break;
+                    }
 
-                    case "3":
+                    case "3" -> {
                         System.out.println("Exiting program... Goodbye!");
                         exitProgram = true;
-                        break;
+                    }
 
-                    default:
-                        System.out.println("Invalid selection. Please choose 1, 2, or 3.");
+                    default -> System.out.println("Invalid selection. Please choose 1, 2, or 3.");
                 }
             }
         }
