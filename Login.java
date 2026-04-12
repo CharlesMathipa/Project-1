@@ -62,4 +62,8 @@ public class Login {
             return "Username or password incorrect, please try again.";
         }
     }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 }
