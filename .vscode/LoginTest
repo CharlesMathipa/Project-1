@@ -31,8 +31,14 @@ public class LoginTest {
 
     @Test
     public void testPhoneNumberValid() {
-        // this tests a valid South African international number
+        // this tests a valid international number
         assertTrue(login.checkPhoneNumber("+27123456789"));
+    }
+
+    @Test
+    public void testPhoneNumberInvalid() {
+        // this tests an invalid international number
+        assertFalse(login.checkPhoneNumber("08966553"));
     }
 
     @Test
