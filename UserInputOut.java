@@ -53,7 +53,7 @@ public class UserInputOut {
                                 System.out.println("Password successfully captured.");
                                 checkPasswordComplexity = true;
                             } else {
-                                System.out.println("Password does not meet complexity requirements.");
+                                System.out.println("Password is not correctly formatted; please ensure that your password contains at least one uppercase letter, one digit, and one special character, and is at least eight characters long.");
                             }
                         }
 

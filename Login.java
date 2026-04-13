@@ -33,10 +33,10 @@ public class Login {
 
     public String registerUser(String username, String password, String name, String surname, String phoneNumber) {
         if (!checkUserName(username)) {
-            return "Username is not correctly formatted...";
+            return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
         }
         if (!checkPasswordComplexity(password)) {
-            return "Password is not correctly formatted...";
+            return "Password is not correctly formatted; please ensure that your password contains at least one uppercase letter, one digit, and one special character, and is at least eight characters long.";
         }
         if (!checkPhoneNumber(phoneNumber)) {
             return "Cell phone number incorrectly formatted or does not contain international code.";
