@@ -17,7 +17,7 @@ public class UserInputOut {
             boolean checkCellPhoneNumber;
 
             while (!exitProgram) {
-                System.out.println("\n=== WELCOME SYSTEM ===");
+                System.out.println("\n=== NEOAPP MENU ===");
                 System.out.println("1. Register");
                 System.out.println("2. Login");
                 System.out.println("3. Exit");
