@@ -6,7 +6,7 @@ public class UserInputOut {
             Login login = new Login();
             boolean exitProgram = false;
 
-            // Variables to store data across menu choices
+            // I initialized these variables to store data across menu choices
             String name;
             String surname;
             String username = "";
