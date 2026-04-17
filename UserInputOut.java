@@ -53,7 +53,7 @@ public class UserInputOut {
                                 System.out.println("Password successfully captured.");
                                 checkPasswordComplexity = true;
                             } else {
-                                System.out.println("Password is not correctly formatted; please ensure that your password contains at least one uppercase letter, one digit, and one special character, and is at least eight characters long.");
+                                System.out.println("Password is not correctly formatted; please ensure that your password contains at least eight characters, a capital letter, a number, and a special character.");
                             }
                         }
 
@@ -65,7 +65,7 @@ public class UserInputOut {
                                 System.out.println("Phone number successfully added.");
                                 checkCellPhoneNumber = true;
                             } else {
-                                System.out.println("Phone number is incorrectly formatted or does not contain the international code.");
+                                System.out.println("Cell phone number is incorrectly formatted or does not contain the international code.");
                             }
                         }
 
@@ -110,14 +110,14 @@ public class UserInputOut {
                         System.out.println(login.returnLoginStatus(isValidLogin));
 
                         if (isValidLogin) {
-                            System.out.println("Access Granted to System Features.");
+                            System.out.println("A successful login.");
                         } else {
-                            System.out.println("Access Denied. Please try again.");
+                            System.out.println("Login failed..");
                         }
                     }
 
                     case "3" -> {
-                        System.out.println("Exiting program... Goodbye!");
+                        System.out.println("Exiting NEOAPP... Goodbye!");
                         exitProgram = true;
                     }
 

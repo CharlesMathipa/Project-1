@@ -36,7 +36,7 @@ public class Login {
             return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
         }
         if (!checkPasswordComplexity(password)) {
-            return "Password is not correctly formatted; please ensure that your password contains at least one uppercase letter, one digit, and one special character, and is at least eight characters long.";
+            return "Password is not correctly formatted; please ensure that your password contains at least eight characters, a capital letter, a number, and a special character";
         }
         if (!checkPhoneNumber(phoneNumber)) {
             return "Cell phone number incorrectly formatted or does not contain international code.";
