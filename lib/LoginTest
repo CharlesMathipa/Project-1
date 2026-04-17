@@ -3,53 +3,90 @@ import org.junit.jupiter.api.Test;
 
 public class LoginTest {
 
+    
     Login login = new Login();
 
     @Test
     public void testCheckUserNameCorrect() {
-        //this tests a valid username
+       
         assertTrue(login.checkUserName("kyl_1"));
     }
 
     @Test
     public void testCheckUserNameIncorrect() {
-        //this tests an invalid username
+      
         assertFalse(login.checkUserName("kyle_12345"));
     }
 
     @Test
     public void testCheckPasswordComplexitySuccess() {
-        //this tests a valid password
+        
         assertTrue(login.checkPasswordComplexity("Ch@tt3r2023!"));
     }
 
     @Test
-    public  void testCheckPasswordComplexityFailure() {
-        //this tests an invalid password
+    public void testCheckPasswordComplexityFailure() {
+      
         assertFalse(login.checkPasswordComplexity("password"));
     }
 
     @Test
     public void testPhoneNumberValid() {
-        // this tests a valid international number
+       
         assertTrue(login.checkPhoneNumber("+27123456789"));
     }
 
     @Test
     public void testPhoneNumberInvalid() {
-        // this tests an invalid international number
+        
         assertFalse(login.checkPhoneNumber("08966553"));
     }
 
     @Test
-    public void testLoginLogic() {
-        //We should first, register a user to set the 'stored' variables
+    public void testRegisterUserSuccess() {
+       
+        String expectedMessage = "The two above conditions have been met and the user has been registered successfully.";
+        String actualMessage = login.registerUser("ky_1", "P@ssword1!", "John", "Doe", "+27821234567");
+        
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    public void testLoginLogicSuccess() {
+       
         login.registerUser("ky_1", "P@ssword1!", "John", "Doe", "+27821234567");
         
-        //This Test if login succeeds with the correct details
+       
         assertTrue(login.loginUser("ky_1", "P@ssword1!"));
+    }
+
+    @Test
+    public void testLoginLogicFailure() {
         
-        //This this test if login fails with the wrong password
+        login.registerUser("ky_1", "P@ssword1!", "John", "Doe", "+27821234567");
+        
+        
         assertFalse(login.loginUser("ky_1", "wrongPass"));
+    }
+
+    @Test
+    public void testReturnLoginStatusSuccess() {
+        
+        login.registerUser("ky_1", "P@ssword1!", "John", "Doe", "+27821234567");
+        
+        
+        String expectedMessage = "Welcome John, Doe it is great to see you again.";
+        String actualMessage = login.returnLoginStatus(true);
+        
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    public void testReturnLoginStatusFailure() {
+        // Tests the exact string output for a failed login
+        String expectedMessage = "Username or password incorrect, please try again.";
+        String actualMessage = login.returnLoginStatus(false);
+        
+        assertEquals(expectedMessage, actualMessage);
     }
 }
